@@ -30,7 +30,7 @@ public class ReservationDao {
 		}
 	}
 
-	public Reservation findById(long id) {
+	public Reservation findById(String id) {
 		return jdbcTemplate.queryForObject("select * from reservation where id=?", new Object[] { id },
 				new ReservationRowMapper());
 	}

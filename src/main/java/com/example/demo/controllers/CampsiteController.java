@@ -79,9 +79,8 @@ public class CampsiteController {
 					"The campsite reservation can be reserved minimum 1 day(s) ahead of arrival and up to 1 month in advance.");
 		}
 
-		long reservationLengthDays = getNumberOfDaysBetween(input.getFromDate().getTime(),
-				input.getToDate().getTime());
-		if (!(reservationLengthDays >= 1 && reservationLengthDays <= 3)) {
+		long reservationLengthDays = getNumberOfDaysBetween(input.getFromDate().getTime(), input.getToDate().getTime());
+		if (!(reservationLengthDays >= 0 && reservationLengthDays <= 3)) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
 					.body("The campsite can be reserved for min 1 day and max 3 days");
 		}
@@ -112,8 +111,7 @@ public class CampsiteController {
 					"The campsite reservation can be modified minimum 1 day(s) ahead of arrival and up to 1 month in advance.");
 		}
 
-		long reservationLengthDays = getNumberOfDaysBetween(input.getFromDate().getTime(),
-				input.getToDate().getTime());
+		long reservationLengthDays = getNumberOfDaysBetween(input.getFromDate().getTime(), input.getToDate().getTime());
 		if (!(reservationLengthDays >= 1 && reservationLengthDays <= 3)) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
 					.body("The campsite can be reserved for min 1 day and max 3 days");
@@ -137,8 +135,13 @@ public class CampsiteController {
 		}
 	}
 
+	@RequestMapping(method = RequestMethod.GET, path = "/reservations/{id}")
+	public Reservation getReservation(@PathVariable String id) {
+		return campsiteManager.findById(id);
+	}
+
 	private long getNumberOfDaysBetween(long startTime, long endTime) {
-		long diffInMillies = Math.abs(endTime - startTime);
+		long diffInMillies = endTime - startTime;
 		return TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
 	}
 

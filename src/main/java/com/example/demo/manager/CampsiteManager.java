@@ -59,6 +59,10 @@ public class CampsiteManager {
 		return confirmation;
 	}
 
+	public Reservation findById(String id) {
+		return reservationDao.findById(id);
+	}
+
 	public int delete(String id) {
 		return reservationDao.deleteById(id);
 	}
