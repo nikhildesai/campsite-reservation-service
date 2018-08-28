@@ -28,7 +28,6 @@ public class ReservationDao {
 			reservation.setEmail(rs.getString("email"));
 			return reservation;
 		}
-
 	}
 
 	public Reservation findById(long id) {
