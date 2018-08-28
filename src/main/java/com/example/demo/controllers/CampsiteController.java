@@ -112,7 +112,7 @@ public class CampsiteController {
 		}
 
 		long reservationLengthDays = getNumberOfDaysBetween(input.getFromDate().getTime(), input.getToDate().getTime());
-		if (!(reservationLengthDays >= 1 && reservationLengthDays <= 3)) {
+		if (!(reservationLengthDays >= 0 && reservationLengthDays <= 3)) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
 					.body("The campsite can be reserved for min 1 day and max 3 days");
 		}
