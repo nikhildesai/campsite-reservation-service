@@ -36,6 +36,9 @@ Output:
 Output:
 ```[{"id":"3b9d821d-ac9d-449f-bf04-1c150c94be83","fromDate":"2018-09-06","toDate":"2018-09-07","email":"a@b.com","name":"Nikhil Desai"}]```
 
+## Get a reservation
+```$ curl http://localhost:8080/reservations/995f09c7-e9ab-45bb-9133-69db592cb05d```
+
 # Requirements
 
 An underwater volcano formed a new small island in the Pacific Ocean last month. All the conditions on the island seems perfect and it was decided to open it up for the general public to experience the pristine uncharted territory.
